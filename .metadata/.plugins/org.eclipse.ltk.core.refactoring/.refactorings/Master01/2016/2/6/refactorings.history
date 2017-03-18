@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete element from project &apos;Master01&apos;&#x0D;&#x0A;- Original project: &apos;Master01&apos;&#x0D;&#x0A;- Original element: &apos;Master01/src/milan.panic.traditional&apos;" description="Delete element" element1="/src&lt;milan.panic.traditional" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1454447026778" subPackages="false" version="1.0"/>
-</session>

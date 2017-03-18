@@ -1,8 +1,0 @@
-package milan.panic.master.bytecode;
-
-public class Example {
-	public int method(int a){
-		new Object();
-		return a+2;
-	}
-}

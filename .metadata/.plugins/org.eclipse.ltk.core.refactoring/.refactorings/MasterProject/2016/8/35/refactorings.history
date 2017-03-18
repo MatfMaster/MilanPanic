@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy package &apos;milan.panic.master.dependancy.injection&apos; to &apos;SpringXML/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;MasterProject&apos;&#x0D;&#x0A;- Destination element: &apos;SpringXML/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;MasterProject/src/milan.panic.master.dependancy.injection&apos;" description="Copy package" destination="=SpringXML/src\/main\/java" element1="/src&lt;milan.panic.master.dependancy.injection" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1471755485539" version="1.0"/>
-</session>
