@@ -1,0 +1,5 @@
+package milan.panic.master.spring.aop;
+@Aspect
+public class JavaAspect {
+
+}

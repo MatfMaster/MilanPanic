@@ -1,0 +1,27 @@
+<!-- spring-intermidiate-aop.xml -->
+<!-- Spring deficija aspekta unutar xml fajla. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- Omogućavanje automatskog stvaranje zastupnika oko 
+		spring objekata. Analogno se može definisati Java konfiguracija. -->
+	<aop:aspectj-autoproxy />
+
+	<aop:config>
+		<!-- Xml definisanje aspekta -->
+		<aop:aspect id="aspectName">
+			<!-- Definicija tačke preseka, identičan AspectJ jezik -->
+			<aop:pointcut id="pointcut"
+				expression="execution(* milan.panic.master..Service*.(..)" />
+			<!-- Definicija saveta preseka -->
+			<aop:before method="pointcut"
+				pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>

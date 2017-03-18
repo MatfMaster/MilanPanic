@@ -1,0 +1,28 @@
+/**Primer dobijenog bajt koda prilikom prevođenja*/
+package milan.panic.master.bytecode;
+/** Compiled from "Example.java"
+public class milan.panic.master.bytecode.Example {
+  //Podrazumevani konstruktor
+  public milan.panic.master.bytecode.Example(); 
+    Code:
+       0: aload_0   
+       1: invokespecial #8   // Method java/lang/Object."<init>":()V
+       4: return
+
+  public int method(int);
+    Code:
+       0: new           #3   // class java/lang/Object
+							 // kreiranje objekta na hipu
+       3: invokespecial #8   // Method java/lang/Object."<init>":()V
+							 // Poziv konstruktora 
+       6: iload_1			 // Učitavanje vrednosti iz lokalne promenljive 
+       7: iconst_2			 // Učitavanje konstante 
+       8: iadd				 // Sabiranje
+       9: ireturn			 // Povratak iz metoda
+} */
+public class Example {
+	public int method(int a){
+		new Object();
+		return a+2;
+	}
+}

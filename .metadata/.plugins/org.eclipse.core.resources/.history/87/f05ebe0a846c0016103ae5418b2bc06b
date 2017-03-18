@@ -1,0 +1,13 @@
+package milan.panic.master.spring.aop;
+
+import org.aspectj.lang.JoinPoint;
+
+public class AfterMethod{
+	@Override
+	public void afterReturning(Object returnValue, Method method,
+			Object[] args, Object target) throws Throwable {
+		/**
+		 * After method body
+		 */
+	}
+}

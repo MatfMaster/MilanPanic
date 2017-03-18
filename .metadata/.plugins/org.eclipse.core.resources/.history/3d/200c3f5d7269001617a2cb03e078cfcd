@@ -1,0 +1,22 @@
+package milan.panic.master.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import milan.panic.master.dependency.injection.ConstructorInjectionClient;
+import milan.panic.master.dependency.injection.Service;
+import milan.panic.master.dependency.injection.SetterInjectionClient;
+
+public class SpringProgram {
+	static ApplicationContext springContainer;
+
+	public static void main(String[] args) {
+		springContainer = new ClassPathXmlApplicationContext(
+				"dependency-injection.xml");
+		SetterInjectionClient springObjectSetterClient = 
+				(SetterInjectionClient) springContainer.getBean("setterClient");
+
+	}
+
+}

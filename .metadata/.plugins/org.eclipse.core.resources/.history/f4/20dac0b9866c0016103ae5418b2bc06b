@@ -1,0 +1,10 @@
+package milan.panic.master.spring.aop;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public class JavaAspect {
+	@Pointcut("execution(* milan.panic.master..Service*.*(..))")
+	public void pointcut(){}
+}

@@ -1,0 +1,28 @@
+package milan.panic.master.weaving;
+
+/**
+ * Program u kome su utkani saveti
+ */
+public class Program {
+	public static void main(String[] args) {
+		new Program();
+		/**
+		 * Aspektni savet smešta se pre poziva metoda, kao što je
+		 * definisano jezikom
+		 */
+		ExampleAspect.aspectOf().beforeCall();
+		/**
+		 * Regularan poziv metoda
+		 */
+		method();
+	}
+
+	public static void method() {
+		/**
+		 * Aspektni savet pre izvršenja metoda(na početku izvršenja
+		 * metoda)
+		 */
+		ExampleAspect.aspectOf().beforeExecution();
+		System.out.println("method");
+	}
+}

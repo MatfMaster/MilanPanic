@@ -1,0 +1,46 @@
+<!-- spring-new-aop.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<bean id="service"
+		class="milan.panic.master.spring.aop.ServiceImpl" />
+
+	<!--Omogućavanje automatskog stvaranje zastupnika oko spring 
+		objekata. Analogno se može definisati Java konfiguracija 
+		anotacijom @EnableAspectJAutoProxy. -->
+	<aop:aspectj-autoproxy />
+
+	<bean id="xmlAspect"
+		class="milan.panic.master.spring.aop.XmlAspect" />
+
+	<aop:config>
+		<!-- Xml definisanje aspekta - eksplicitno definisanje 
+			procesa tkanja za logiku koja je definisana u jednom Spring 
+			objektu -->
+		<aop:aspect id="aspectName" ref="xmlAspect">
+			<!-- Definicija tačke preseka, identičan AspectJ jezik -->
+			<aop:pointcut id="pointcut"
+				expression="execution(* milan.panic.master..Service*.*(..))" />
+			<!-- Definicija saveta: koji se metod iz definicije Spring 
+				objekta treba primeniti i na koju tačku preseka -->
+			<aop:before method="beforeMethod"
+				pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- Java definisanje aspekta - identično @AspectJ definicji 
+		aspekta -->
+	<bean id="javaAspect"
+		class="milan.panic.master.spring.aop.JavaAspect" />
+	<!--Napomena:Ukoliko je definisana konfiguracija context-component-scan 
+		u xml konfiguraciji odnosno, @ComponentScan u Java konfiguraciji 
+		koja omogućava automatsko skeniranje objekta u potrazi za 
+		Spring objektima a klasa u kojoj se definiše aspekt je anotirana 
+		sa @Component nema čak ni potrebe za eksplicitnim definisanjem 
+		Spring objekta potpuno automatizuje kreiranje aspekta. -->
+</beans>

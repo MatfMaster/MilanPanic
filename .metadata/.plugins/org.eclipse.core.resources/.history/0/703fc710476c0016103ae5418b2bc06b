@@ -1,0 +1,43 @@
+package milan.panic.master.weaving;
+
+import org.aspectj.lang.NoAspectBoundException;
+
+public class ExampleAspect {
+	private static Throwable ajc$initFailureCause;
+	public static ExampleAspect ajc$perSingletonInstance;
+	/**
+	 * Metod koji se koristi za dohvatanje instance aspekta
+	 */
+	public static ExampleAspect aspectOf() {
+		if (ajc$perSingletonInstance == null) {
+			throw new NoAspectBoundException(
+					"milan.panic.master.weaving.ExampleAspect",
+					ajc$initFailureCause);
+		}
+		return ajc$perSingletonInstance;
+	}
+
+	public static boolean hasAspect() {
+		return ajc$perSingletonInstance != null;
+	}
+
+	private static void ajc$postClinit() {
+		ajc$perSingletonInstance = new ExampleAspect();
+	}
+
+	static {
+		try {
+			ajc$postClinit();
+		} catch (Throwable localThrowable) {
+			ajc$initFailureCause = localThrowable;
+		}
+	}
+
+	public void beforeExecution() {
+		System.out.println("beforeExecution");
+	}
+
+	public void beforeCall() {
+		System.out.println("beforeCall");
+	}
+}

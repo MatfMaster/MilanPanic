@@ -1,0 +1,24 @@
+package milan.panic.master.spring.aop;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+/**
+ * Napomena:Ukoliko je definisana konfiguracija context-component-scan
+ * u xml konfiguraciji odnosno, @ComponentScan u Java konfiguraciji a
+ * ova klasa anotirana sa @Component nema čak ni potrebe za
+ * eksplicitnim definisanjem Spring objekta potpuno automatizuje kreiranje aspekta
+ */
+@Aspect
+public class JavaAspect {
+	@Pointcut("execution(* milan.panic.master..Service*.*(..))")
+	public void pointcut() {
+	}
+
+	@Before("pointcut()")
+	public void beforeMethod(JoinPoint joinPoint) {
+		System.out.println("Before advice-Xml defined aspect.");
+	}
+}

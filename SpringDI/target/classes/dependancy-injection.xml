@@ -1,0 +1,30 @@
+<!-- dependency-injection.xml -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!--Objekti se u automatski kreiraju od strane Spring kontainera 
+		pri skeniranju ovog fajla. Svakom Spring objektu definiše se ime, 
+		kao i klasa koja se koristi za instanciranje objekta, nakon toga moguće 
+		je bilo gde u Spring kontaineru koristiti definisano ime kao referencu 
+		na Spring objekat. -->
+	<bean id="service"
+		class="milan.panic.master.dependency.injection.ServiceImpl" />
+
+	<!-- Spring umetanje zavisnosti -->
+	<!-- Spring podržava dva moguća tipa umetanja zavisnosti: -->
+
+	<!-- 1. Konstruktorski tip kome se definiše parametar constructor-arg. -->
+	<bean id="constructorClient"
+		class="milan.panic.master.dependency.injection.ConstructorInjectionClient">
+		<constructor-arg ref="service" />
+	</bean>
+	<!-- 2. Seterski tip kome se definiše parametar property. -->
+	<bean id="setterClient"
+		class="milan.panic.master.dependency.injection.SetterInjectionClient">
+		<property name="service" ref="service" />
+	</bean>
+
+</beans>

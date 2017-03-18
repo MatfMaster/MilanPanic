@@ -1,0 +1,8 @@
+package milan.panic.master.weaving;
+
+public class Snippet {
+	public static void main(String[] args) {
+		acpectjweaver.jar 
+	}
+}
+

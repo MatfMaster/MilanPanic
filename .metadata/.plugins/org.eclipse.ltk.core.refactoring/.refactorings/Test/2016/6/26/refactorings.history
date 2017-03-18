@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;common&apos; to &apos;Test/src/milan.panic.master&apos;&#x0D;&#x0A;- Original project: &apos;Test&apos;&#x0D;&#x0A;- Destination element: &apos;Test/src/milan.panic.master&apos;&#x0D;&#x0A;- Original element: &apos;common&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move folder" destination="/src&lt;milan.panic.master" element1="common" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1466502590461" units="0" version="1.0"/>
+</session>

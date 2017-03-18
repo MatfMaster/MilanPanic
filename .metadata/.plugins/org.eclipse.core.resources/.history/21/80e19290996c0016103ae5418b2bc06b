@@ -1,0 +1,19 @@
+package milan.panic.master.spring.aop;
+
+/**
+ * Uključuje se definicija tačka spajanja iz AspectJ projekta.
+ */
+import org.aspectj.lang.JoinPoint;
+
+/**
+ * Xml definicija aspekta. Aspekt se definiše kao najobičniji
+ * objekat(registruje se kao Spring objekat). On služi samo za
+ * definisanje metoda koji će služiti kao saveti, kasnije, u xml
+ * konfiguraciji se registruje pravi aspekt, tačka preseka i ovaj
+ * objekat koristi kao referenca prilikom definisanja saveta.
+ */
+public class XmlAspect {
+	public void beforeMethod(JoinPoint joinPoint) {
+		System.out.println("Before advice-Xml defined aspect.");
+	}
+}

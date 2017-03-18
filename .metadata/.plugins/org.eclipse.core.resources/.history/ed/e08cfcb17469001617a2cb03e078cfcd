@@ -1,0 +1,34 @@
+package milan.panic.master.spring.aop;
+
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
+
+/**
+ * Spring je obezbedio interfejse koje treba implementirati za sve
+ * podržane savete(Before, After, Around, After Throwing) da bi se
+ * direktno dobilo aspektno ponašanje. 
+ * Implementacija around saveta.
+ * 
+ * Ovaj savet je najopštiji, i vidi se da u mnogome podseća na invoke
+ * metod koji koristi zastupalac.
+ */
+/**
+ * 
+ */
+public class AroundMethod implements MethodInterceptor {
+	@Override
+	public Object invoke(MethodInvocation methodInvocation)
+			throws Throwable {
+		try {
+			/**
+			 * Objekat koji se prosleđuje kao parametar u mnogome
+			 * olakšava korišćenje originalnog metoda
+			 */
+			Object result = methodInvocation.proceed();
+			return result;
+
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
+	}
+}

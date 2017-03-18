@@ -1,0 +1,12 @@
+package milan.panic.master.spring.aop;
+
+import org.aspectj.lang.JoinPoint;
+
+public class BeforeMethod  {
+	public void logBefore(JoinPoint joinPoint) {
+
+		System.out.println("logBefore() is running!");
+		System.out.println("hijacked : " + joinPoint.getSignature().getName());
+		System.out.println("******");
+	}
+}

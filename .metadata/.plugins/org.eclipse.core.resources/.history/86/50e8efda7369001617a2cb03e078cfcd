@@ -1,0 +1,31 @@
+package milan.panic.master.spring.aop;
+
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
+
+public class AroundMethod implements MethodInterceptor {
+	@Override
+	public Object invoke(MethodInvocation methodInvocation)
+			throws Throwable {
+
+		try {
+			/**
+			 * Objekat koji se prosleđuje kao parametar u mnogome
+			 * olakšava korišćenje originalnog metoda
+			 */
+			Object result = methodInvocation.proceed();
+
+			// same with AfterReturningAdvice
+			System.out.println(
+					"HijackAroundMethod : Before after hijacked!");
+
+			return result;
+
+		} catch (IllegalArgumentException e) {
+			// same with ThrowsAdvice
+			System.out.println(
+					"HijackAroundMethod : Throw exception hijacked!");
+			throw e;
+		}
+	}
+}

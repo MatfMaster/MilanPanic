@@ -1,0 +1,51 @@
+<!-- spring-intermidiate-aop.xml -->
+<!-- Spring prelazno AOP rešenje između definisanog AspectJ jezika 
+	za definisanje tačaka preseka. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="service" class="milan.panic.master.spring.aop.ServiceImpl" />
+	
+	<bean id="aroundMethodBean" class="milan.panic.master.spring.aop.AroundMethod" />
+	<bean id="beforeMethodBean" class="milan.panic.master.spring.aop.BeforeMethod" />
+	<bean id="afterMethodBean" class="milan.panic.master.spring.aop.AfterMethod" />
+	<bean id="afterThrowingMethodBean" class="milan.panic.master.spring.aop.AfterMethod" />
+	<!-- Spring prelazno rešenje za definisanje tačaka preseka jeste 
+		koncept definisanje tačaka preseka u takozvanim nadgledačima, 
+		konceptu koji je spring razvio. Nadgledač se dodeljuje zastupniku 
+		objekta i govori mu koje metode može da presretne. Ovo je značajno 
+		jer je automatizuje zastupanje samo pojedinih metoda Spring objekta. -->
+	<bean id="advisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref bean="aroundMethodBean" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*serviceMethod</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Zastupnik -->
+	<bean id="serviceProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+
+		<property name="proxyInterfaces"
+			value="milan.panic.master.spring.aop.Service" />
+
+		<property name="target" ref="service" />
+
+		<property name="interceptorNames">
+			<list>
+				<value>aroundMethodBean</value>
+				<value>beforeMethodBean</value>
+				<value>afterMethodBean</value>
+				<value>advisor</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

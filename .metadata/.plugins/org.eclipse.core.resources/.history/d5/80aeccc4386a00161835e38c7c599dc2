@@ -1,0 +1,29 @@
+package milan.panic.master.spring.aop;
+
+/**
+ * Definicija MethodInterceptor, MethodInvocation
+ * interfejsa u potpunosti je analogna InvocationHandler
+ * odnosno Method interfejsu podržanom od strane Java 
+ * programskog jezika.
+ */
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
+
+/**
+ * Implementacija ovog interfejsa je u stvar around savet unutar AOP
+ * definicija. Ovaj savet je najopštiji i vidi se da u mnogome podseća
+ * na invoke metod koji koristi zastupalac. Ponašanje ostalih saveta
+ * moguće je lako definisati od ovog najopštijeg.
+ */
+public class AroundMethod implements MethodInterceptor {
+	@Override
+	public Object invoke(MethodInvocation methodInvocation)
+			throws Throwable {
+		try {
+			Object result = methodInvocation.proceed();
+			return result;
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+package milan.panic.master.spring.aop;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SpringProgram {
+	static ApplicationContext springContainer;
+
+	public static void main(String[] args) {
+		springContainer = new ClassPathXmlApplicationContext(
+				"spring-old-aop.xml");
+		Service service = (Service) springContainer.getBean("serviceProxy");
+		service.serviceMethod();
+	}
+
+}

@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/milan/panic/master/dependancy/injection/ConstructorInjectionClient.java=UTF-8
+encoding//src/milan/panic/master/dependancy/injection/Injector.java=UTF-8
+encoding//src/milan/panic/master/dependancy/injection/ServiceImpl.java=UTF-8
+encoding//src/milan/panic/master/dependancy/injection/SetterInjectionClient.java=UTF-8
+encoding//src/milan/panic/master/joinpoints/Caller2.java=UTF-8
+encoding//src/milan/panic/master/joinpoints/ClassInicialization.java=UTF-8
+encoding//src/milan/panic/master/joinpoints/ObjectPreinitialization.java=UTF-8

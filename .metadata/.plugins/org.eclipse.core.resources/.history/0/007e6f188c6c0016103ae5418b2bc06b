@@ -1,0 +1,12 @@
+package milan.panic.master.spring.aop;
+
+/**
+ * Uključuje se definicija tačka spajanja iz AspectJ projekta.
+ */
+import org.aspectj.lang.JoinPoint;
+
+public class XmlAspect {
+	public void beforeMethod(JoinPoint joinPoint) {
+		System.out.println("Before advice-Xml defined aspect.");
+	}
+}

@@ -1,0 +1,9 @@
+package milan.panic.master.spring.aop;
+
+public class ServiceImpl  {
+
+	
+	public void serviceMethod() {
+	}
+
+}

@@ -1,0 +1,37 @@
+<!-- spring-old-aop.xml -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="service" class="milan.panic.master.spring.aop.ServiceImpl" />
+
+	<bean id="aroundMethodBean" class="milan.panic.master.spring.aop.AroundMethod" />
+	<bean id="beforeMethodBean" class="milan.panic.master.spring.aop.BeforeMethod" />
+	<bean id="afterMethodBean" class="milan.panic.master.spring.aop.AfterMethod" />
+
+	<bean id="serviceProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- Ovaj atribut klase ProxyFactoryBean je jako bitan, ukoliko 
+			nije postavljen, Spring kontainer će koristiti CGLIB proxy biblioteku 
+			koja se zasnia na manipulaciji bajt kodom i pokušaće da napravi zastupnika 
+			od klase, a ne interfejsa kao što radi ugrađeni JDK zastupnik. Opšte 
+			je mišljenje da ne treba koristiti CGLIB zastupaoce osim ako je apsolutno 
+			neophodno, zato što oni ograničavaju sam Java programski jezik. Naime, 
+			CGLIB bilblioteka zahteva da objekat oko koga se kreira zastupalac 
+			ne bude označen sa final -->
+		<property name="proxyInterfaces" value="milan.panic.master.spring.aop.Service" />
+
+		<property name="target" ref="service" />
+
+		<property name="interceptorNames">
+			<list>
+				<value>aroundMethodBean</value>
+				<value>beforeMethodBean</value>
+				<value>afterMethodBean</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>
